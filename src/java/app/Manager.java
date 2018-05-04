@@ -12,12 +12,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.json.*;
 
 /**
@@ -71,6 +77,22 @@ public class Manager {
         }
         return risultato;
     }
+    
+    //NON FUNZIONANTE!!
+    /*
+    @POST
+    @Path("/postordine")
+    @Consumes("application/x-www-form-urlencoded;charset=UTF-8")
+    @Produces("application/json")
+    public void postordine(@FormParam("tipo") String tipo, @FormParam("specifiche") String specifiche, @FormParam("ora") String ora, @FormParam("tavolo") String tavolo, @FormParam("note") String note) {
+
+        System.out.println("ORDINE:");
+        System.out.println("tipo" + tipo);
+        System.out.println("specifiche" + specifiche);
+        System.out.println("ora" + ora);
+        System.out.println("tavolo" + tavolo);
+        System.out.println("note" + note);
+    }*/
     
     public ArrayList<HashMap<String,String>> listaMapOrdini(String JSON) throws JSONException{
         ArrayList<HashMap<String,String>> lMap=new ArrayList<>();
