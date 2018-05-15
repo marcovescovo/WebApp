@@ -69,22 +69,20 @@ public class Manager {
                 String st="{\"id\":\""+o.getId()+"\",\"tipo\":\""+o.getTipo()+"\", \"specifiche\":\""+o.getSpecifiche()+"\", \"ora\":\""+o.getOra()+"\", \"tavolo\":\""+o.getTavolo()+"\", \"note\":\""+o.getNote()+"\"}";
                 risultato+=st;
             }
-            risultato+="]}}";
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
         }
+        risultato+="]}}";
         return risultato;
     }
     
     //NON FUNZIONANTE!!
-    /*
     @POST
-    @Path("/postordine")
-    @Consumes("application/x-www-form-urlencoded;charset=UTF-8")
-    @Produces("application/json")
-    public void postordine(@FormParam("tipo") String tipo, @FormParam("specifiche") String specifiche, @FormParam("ora") String ora, @FormParam("tavolo") String tavolo, @FormParam("note") String note) {
+    @Path("/posto")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void postordine(@PathParam("tipo") String tipo, @PathParam("specifiche") String specifiche, @PathParam("ora") String ora, @PathParam("tavolo") String tavolo, @PathParam("note") String note) {
 
         System.out.println("ORDINE:");
         System.out.println("tipo" + tipo);
@@ -92,7 +90,7 @@ public class Manager {
         System.out.println("ora" + ora);
         System.out.println("tavolo" + tavolo);
         System.out.println("note" + note);
-    }*/
+    }
     
     public ArrayList<HashMap<String,String>> listaMapOrdini(String JSON) throws JSONException{
         ArrayList<HashMap<String,String>> lMap=new ArrayList<>();
