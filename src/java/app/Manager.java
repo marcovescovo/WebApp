@@ -82,7 +82,7 @@ public class Manager {
     
     @POST
     @Path("/post")
-    public void addOrdine(@FormParam("specifiche") String specifiche,@FormParam("ora") String ora,@FormParam("tavolo") String tavolo,@FormParam("note") String tipo,@FormParam("tipo") String note) throws ClassNotFoundException, SQLException {
+    public void addOrdine(@FormParam("specifiche") String specifiche,@FormParam("ora") String ora,@FormParam("tavolo") String tavolo,@FormParam("note") String note,@FormParam("tipo") String tipo) throws ClassNotFoundException, SQLException {
         
         Connection connection=null;
         String username="user1";
