@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -78,18 +79,20 @@ public class Manager {
         return risultato;
     }
     
-    //NON FUNZIONANTE!!
+    
     @POST
-    @Path("/posto")
-    @Produces(MediaType.APPLICATION_JSON)
-    public void postordine(@PathParam("tipo") String tipo, @PathParam("specifiche") String specifiche, @PathParam("ora") String ora, @PathParam("tavolo") String tavolo, @PathParam("note") String note) {
-
-        System.out.println("ORDINE:");
-        System.out.println("tipo" + tipo);
-        System.out.println("specifiche" + specifiche);
-        System.out.println("ora" + ora);
-        System.out.println("tavolo" + tavolo);
-        System.out.println("note" + note);
+    @Path("/post")
+    public void addOrdine(@FormParam("specifiche") String specifiche,@FormParam("ora") String ora,@FormParam("tavolo") String tavolo,@FormParam("note") String tipo,@FormParam("tipo") String note) throws ClassNotFoundException, SQLException {
+        
+        Connection connection=null;
+        String username="user1";
+        String password="user1";
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+        connection=DriverManager.getConnection("jdbc:derby://localhost:1527/DB_ordini",username,password);
+        Statement st=connection.createStatement();
+        String sql="insert into ordini (tipo,specifiche,ora,tavolo,note) values ('"+tipo+"','"+specifiche+"','"+ora+"','"+tavolo+"','"+note+"')";
+        st.executeUpdate(sql);
+        
     }
     
     public ArrayList<HashMap<String,String>> listaMapOrdini(String JSON) throws JSONException{

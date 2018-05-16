@@ -11,6 +11,30 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>WebApp's Index page</div><br>
+        
+        <form action="/WebApp/webresources/manager/getordini" accept="application/json" target="_blank">
+            <p>Vedi gli ordini</p>
+            <input type="submit" value="GET">
+        </form><br>
+        
+        <form action="/WebApp/webresources/manager/post" method="post">
+		<p>
+                    Tipo : <input type="text" name="tipo" />
+		</p>
+		<p>
+                    Specifiche : <input type="text" name="specifiche" />
+		</p>
+		<p>
+                    Ora : <input type="text" name="ora" />
+		</p>
+		<p>
+                    Tavolo : <input type="text" name="tavolo" />
+		</p>
+		<p>
+                    Note : <input type="text" name="note" />
+		</p>
+		<input type="submit" value="POST" />
+	</form>
     </body>
 </html>
